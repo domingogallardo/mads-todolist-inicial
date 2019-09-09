@@ -76,7 +76,7 @@ public class UsuarioTest {
 
     @Test
     @Transactional(readOnly = true)
-    public void buscarUsuarioEnBaseDatos() throws Exception {
+    public void buscarUsuarioEnBaseDatos() {
         // GIVEN
         // En el application.properties se cargan los datos de prueba del fichero datos-test.sql
 
@@ -92,7 +92,7 @@ public class UsuarioTest {
 
     @Test
     @Transactional(readOnly = true)
-    public void buscarUsuarioPorEmail() throws Exception {
+    public void buscarUsuarioPorEmail() {
         // GIVEN
         // Datos cargados de datos-test.sql
 
@@ -106,7 +106,7 @@ public class UsuarioTest {
 
     @Test
     @Transactional(readOnly = true)
-    public void servicioLoginUsuario() throws Exception {
+    public void servicioLoginUsuario() {
         // GIVEN
         // Datos cargados de datos-test.sql
 
@@ -125,7 +125,7 @@ public class UsuarioTest {
 
     @Test
     @Transactional
-    public void servicioRegistroUsuario() throws Exception {
+    public void servicioRegistroUsuario() {
         // GIVEN
 
         Usuario usuario = new Usuario("usuario.prueba@gmail.com");
@@ -195,6 +195,37 @@ public class UsuarioTest {
         // THEN
 
         assertThat(usuario.getId()).isEqualTo(1L);
+    }
 
+    @Test
+    public void comprobarIgualdadSinId() {
+        // GIVEN
+
+        Usuario usuario1 = new Usuario("mariafernandez@gmail.com");
+        Usuario usuario2 = new Usuario("mariafernandez@gmail.com");
+        Usuario usuario3 = new Usuario("antoniolopez@gmail.com");
+
+        // THEN
+
+        assertThat(usuario1).isEqualTo(usuario1);
+        assertThat(usuario1).isEqualTo(usuario2);
+        assertThat(usuario1).isNotEqualTo(usuario3);
+    }
+
+    @Test
+    public void comprobarIgualdadConId() {
+        // GIVEN
+        Usuario usuario1 = new Usuario("juangutierrez@gmail.com");
+        usuario1.setId(1L);
+
+        Usuario usuario2 = new Usuario("mariafernandez@gmail.com");
+        usuario2.setId(1L);
+
+        Usuario usuario3 = new Usuario("antoniolopez@gmail.com");
+        usuario3.setId(2L);
+
+        // THEN
+        assertThat(usuario1).isEqualTo(usuario2);
+        assertThat(usuario1).isNotEqualTo(usuario3);
     }
 }

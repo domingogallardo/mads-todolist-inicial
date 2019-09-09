@@ -3,6 +3,7 @@ package madstodolist.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "usuarios")
@@ -71,5 +72,22 @@ public class Usuario {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        if (id != null && usuario.id != null)
+            // Si tenemos los ID, comparamos por ID
+            return Objects.equals(id, usuario.id);
+        // sino comparamos por campos obligatorios
+        return email.equals(usuario.email);
+    }
+
+    @Override
+    public int hashCode() {
+        // Generamos un hash basado en los campos obligatorios
+        return Objects.hash(email);
+    }
+}
