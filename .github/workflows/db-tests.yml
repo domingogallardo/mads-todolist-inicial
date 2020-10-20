@@ -22,4 +22,4 @@ jobs:
         with:
           java-version: 1.8
       - name: Launch tests with Maven
-        run:  ./mvnw test
+        run:  ./mvnw test -Dspring.profiles.active=mysql
