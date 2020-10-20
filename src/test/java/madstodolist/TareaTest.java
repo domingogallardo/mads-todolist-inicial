@@ -100,7 +100,7 @@ public class TareaTest {
 
         assertThat(tarea.getId()).isNotNull();
         assertThat(tarea.getUsuario()).isEqualTo(usuario);
-        assertThat(tarea.getTitulo()).isEqualTo("Práctica 1 de MADS");
+        assertThat(tarea.getTitulo()).isEqualTo("1 de MADS");
     }
 
     @Test(expected = Exception.class)
