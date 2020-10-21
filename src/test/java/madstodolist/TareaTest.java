@@ -42,7 +42,7 @@ public class TareaTest {
 
         // THEN
 
-        assertThat(tarea.getTitulo()).isEqualTo("Práctica 1 de MADS");
+        assertThat(tarea.getTitulo()).isEqualTo("Práctica 1");
         assertThat(tarea.getUsuario()).isEqualTo(usuario);
     }
 
