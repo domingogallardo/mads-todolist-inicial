@@ -40,7 +40,7 @@ public class UsuarioTest {
         usuario.setFechaNacimiento(sdf.parse("1997-02-20"));
 
         // THEN
-        assertThat(usuario.getEmail()).isEqualTo("juan.gutierrez");
+        assertThat(usuario.getEmail()).isEqualTo("juan.gutierrez@gmail.com");
         assertThat(usuario.getNombre()).isEqualTo("Juan Gutiérrez");
         assertThat(usuario.getPassword()).isEqualTo("12345678");
         assertThat(usuario.getFechaNacimiento()).isEqualTo(sdf.parse("1997-02-20"));
